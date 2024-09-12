@@ -1,2 +1,2 @@
-ex9.c:11:6:undisplayLED	16	static
-ex9.c:93:6:clearNumberOnClock	16	static
+ex9.c:10:6:undisplayLED	16	static
+ex9.c:92:6:clearNumberOnClock	16	static
