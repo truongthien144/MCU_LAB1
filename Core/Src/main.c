@@ -19,6 +19,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "ex6.h"
+#include "ex7.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -90,10 +92,20 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+//  int green_time = 3000; // stage 1
+//  int yellow_time = 2000; // stage 2
+//  int red_time = 5000; // stage 3
+  int count = 12; // Initial count value
+  clearAllClock();
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  testLED(12 - (count / 100) % 12);
+	  if (count <= 0) {
+		  count  = 1200;
+	  }
+	  count = count - 1;
+	  HAL_Delay(10);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -153,8 +165,9 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_11_Pin
-                          |LED_12_Pin|LED_4_Pin|LED_5_Pin|LED_6_Pin
-                          |LED_7_Pin|LED_8_Pin|LED_9_Pin|LED_10_Pin, GPIO_PIN_RESET);
+                          |LED_12_Pin|LED_13_Pin|LED_14_Pin|LED_4_Pin
+                          |LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin
+                          |LED_9_Pin|LED_10_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : LED_RED_Pin LED_YELLOW_Pin LED_GREEN_Pin LED_RED2_Pin
                            LED_YELLOW2_Pin LED_GREEN2_Pin */
@@ -166,11 +179,13 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED_1_Pin LED_2_Pin LED_3_Pin LED_11_Pin
-                           LED_12_Pin LED_4_Pin LED_5_Pin LED_6_Pin
-                           LED_7_Pin LED_8_Pin LED_9_Pin LED_10_Pin */
+                           LED_12_Pin LED_13_Pin LED_14_Pin LED_4_Pin
+                           LED_5_Pin LED_6_Pin LED_7_Pin LED_8_Pin
+                           LED_9_Pin LED_10_Pin */
   GPIO_InitStruct.Pin = LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_11_Pin
-                          |LED_12_Pin|LED_4_Pin|LED_5_Pin|LED_6_Pin
-                          |LED_7_Pin|LED_8_Pin|LED_9_Pin|LED_10_Pin;
+                          |LED_12_Pin|LED_13_Pin|LED_14_Pin|LED_4_Pin
+                          |LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin
+                          |LED_9_Pin|LED_10_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
